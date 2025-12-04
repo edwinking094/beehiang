@@ -701,7 +701,7 @@ export default function App() {
       case 'home':
       default:
         return (
-          <>
+          <React.Fragment>
             <Hero onShopNow={() => setActiveTab('shop')} />
             <FeaturedSection
               products={PRODUCTS}
@@ -709,7 +709,7 @@ export default function App() {
               onSeeAll={() => setActiveTab('shop')}
             />
             <AboutSection />
-          </>
+          </React.Fragment>
         );
     }
   };
