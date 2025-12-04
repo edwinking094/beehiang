@@ -10,13 +10,9 @@ const ProductImage = ({ type, className }) => {
       case 'Signature Maltose Pastry (Heong Piah)':
         return (
           <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
-            {/* Biscuit Body */}
             <circle cx="100" cy="100" r="70" fill="#E8C895" stroke="#D4A76A" strokeWidth="3" />
-            {/* Outer Flakiness */}
             <circle cx="100" cy="100" r="60" fill="none" stroke="#D4A76A" strokeWidth="1" strokeDasharray="10 5" opacity="0.6" />
-            {/* Center filling hint */}
             <circle cx="100" cy="100" r="20" fill="#D99E56" opacity="0.4" filter="blur(5px)" />
-            {/* Sesame Seeds */}
             <g fill="#FFFFFF" opacity="0.9">
               <circle cx="90" cy="90" r="2" />
               <circle cx="110" cy="85" r="2" />
@@ -25,7 +21,6 @@ const ProductImage = ({ type, className }) => {
               <circle cx="115" cy="100" r="2" />
               <circle cx="105" cy="75" r="2" />
             </g>
-            {/* Char marks */}
             <path d="M70 120 Q 80 130 90 125" stroke="#8B4513" strokeWidth="2" fill="none" opacity="0.3" />
             <path d="M130 80 Q 140 70 135 60" stroke="#8B4513" strokeWidth="2" fill="none" opacity="0.3" />
           </svg>
@@ -34,11 +29,8 @@ const ProductImage = ({ type, className }) => {
       case 'Mung Bean Pastry (Tau Sar Piah)':
         return (
           <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
-            {/* Smoother, lighter surface */}
             <circle cx="100" cy="100" r="65" fill="#F4E4BC" stroke="#E1C699" strokeWidth="2" />
-            {/* Stamp/Red Dot (common on Tau Sar Piah) */}
             <circle cx="100" cy="100" r="8" fill="#DA291C" opacity="0.8" />
-            {/* Texture */}
             <path d="M70 70 Q 100 60 130 70" stroke="#E1C699" strokeWidth="1" fill="none" opacity="0.5" />
             <path d="M70 130 Q 100 140 130 130" stroke="#E1C699" strokeWidth="1" fill="none" opacity="0.5" />
           </svg>
@@ -47,9 +39,7 @@ const ProductImage = ({ type, className }) => {
       case 'Traditional Egg Biscuit':
         return (
           <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
-            {/* Fan/Love Letter shape folded */}
             <path d="M60 140 L100 60 L140 140 Q 100 160 60 140 Z" fill="#F9D67E" stroke="#E6B85C" strokeWidth="2" />
-            {/* Grill marks */}
             <line x1="90" y1="80" x2="75" y2="120" stroke="#DDA642" strokeWidth="1" />
             <line x1="110" y1="80" x2="125" y2="120" stroke="#DDA642" strokeWidth="1" />
             <line x1="100" y1="80" x2="100" y2="130" stroke="#DDA642" strokeWidth="1" />
@@ -59,12 +49,9 @@ const ProductImage = ({ type, className }) => {
       case 'Sachima (Honeycomb Cookies)':
         return (
           <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
-            {/* Block shape */}
             <rect x="50" y="60" width="100" height="80" rx="4" fill="#F0C058" stroke="#D4A036" strokeWidth="2" />
-            {/* Noodle texture */}
             <path d="M60 70 H140 M60 85 H140 M60 100 H140 M60 115 H140 M60 130 H140" stroke="#E6B85C" strokeWidth="4" strokeLinecap="round" />
             <path d="M70 60 V140 M90 60 V140 M110 60 V140 M130 60 V140" stroke="#E6B85C" strokeWidth="4" strokeLinecap="round" />
-            {/* Sticky syrup gloss */}
             <circle cx="130" cy="70" r="5" fill="#FFFFFF" opacity="0.4" />
             <circle cx="70" cy="120" r="3" fill="#FFFFFF" opacity="0.4" />
           </svg>
@@ -74,12 +61,9 @@ const ProductImage = ({ type, className }) => {
         return (
           <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
             <g transform="rotate(-15 100 100)">
-              {/* Puff Body */}
               <path d="M50 100 A 50 50 0 0 1 150 100 Z" fill="#E8C895" stroke="#C99B58" strokeWidth="2" />
               <path d="M50 100 Q 100 110 150 100" fill="#E8C895" stroke="#C99B58" strokeWidth="2" />
-              {/* Crimped Edge */}
               <path d="M50 100 C 50 90 60 90 65 95 C 70 85 80 85 85 95 C 90 80 100 80 110 90 C 120 80 130 80 135 95 C 140 90 150 90 150 100" stroke="#C99B58" strokeWidth="2" fill="none" />
-              {/* Bubbles from frying */}
               <circle cx="80" cy="85" r="2" fill="#C99B58" opacity="0.5" />
               <circle cx="120" cy="80" r="3" fill="#C99B58" opacity="0.5" />
             </g>
@@ -89,11 +73,8 @@ const ProductImage = ({ type, className }) => {
       case 'Premium Pineapple Tart':
         return (
           <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
-            {/* Flower Base */}
             <path d="M100 50 Q 115 50 120 65 Q 135 70 130 85 Q 145 100 130 115 Q 135 130 120 135 Q 115 150 100 150 Q 85 150 80 135 Q 65 130 70 115 Q 55 100 70 85 Q 65 70 80 65 Q 85 50 100 50 Z" fill="#FDF0C6" stroke="#E6D298" strokeWidth="2" />
-            {/* Jam Center */}
             <circle cx="100" cy="100" r="25" fill="#E87E04" stroke="#D35400" strokeWidth="1" />
-            {/* Jam Gloss */}
             <circle cx="108" cy="92" r="5" fill="#FFFFFF" opacity="0.4" />
           </svg>
         );
@@ -101,13 +82,10 @@ const ProductImage = ({ type, className }) => {
       case 'Traditional Dodol':
         return (
           <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-md">
-            {/* Pyramid Shape */}
             <path d="M100 50 L 150 150 L 50 150 Z" fill="#4E342E" stroke="#3E2723" strokeWidth="2" />
-            {/* Fold lines (wrapping) */}
             <path d="M100 50 L 100 150" stroke="#3E2723" strokeWidth="1" opacity="0.5" />
             <path d="M100 50 L 125 100" stroke="#3E2723" strokeWidth="1" opacity="0.5" />
             <path d="M100 50 L 75 100" stroke="#3E2723" strokeWidth="1" opacity="0.5" />
-            {/* Shine */}
             <path d="M100 60 L 110 100" stroke="#FFFFFF" strokeWidth="2" opacity="0.1" />
           </svg>
         );
@@ -206,71 +184,73 @@ const Navigation = ({ activeTab, setActiveTab, cartCount }) => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#DA291C] shadow-xl transition-all duration-300">
+    <nav className="sticky top-0 z-50 bg-[#DA291C] shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20 md:h-24">
+        <div className="flex justify-between items-center h-24">
 
           {/* Logo Section */}
           <div
-            className="flex-shrink-0 cursor-pointer flex items-center gap-3 md:gap-4 group"
+            className="flex-shrink-0 cursor-pointer flex items-center gap-4 group"
             onClick={() => setActiveTab('home')}
           >
             {/* Red Box Logo */}
-            <div className="flex flex-col items-center justify-center border-[2.5px] border-yellow-300 rounded-sm px-1.5 py-1 h-14 w-11 md:h-16 md:w-12 bg-[#DA291C] shadow-md group-hover:shadow-lg transition-all duration-300 transform group-hover:scale-105">
-              <span className="font-serif font-bold text-yellow-300 text-lg md:text-xl leading-none mb-0.5">味</span>
-              <span className="font-serif font-bold text-yellow-300 text-lg md:text-xl leading-none">香</span>
+            <div className="flex flex-col items-center justify-center border-2 border-yellow-300 rounded-sm px-2 py-1 h-16 w-12 bg-[#DA291C] shadow-sm">
+              <span className="font-serif font-bold text-yellow-300 text-xl leading-none mb-1">味</span>
+              <span className="font-serif font-bold text-yellow-300 text-xl leading-none">香</span>
             </div>
 
             {/* Text Logo */}
             <div className="flex flex-col justify-center">
-              <h1 className="text-2xl md:text-3xl font-black tracking-wide text-yellow-300 uppercase drop-shadow-sm transition-colors duration-300" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+              <h1 className="text-3xl font-black tracking-wide text-yellow-300 uppercase drop-shadow-sm" style={{ fontFamily: 'Arial Black, sans-serif' }}>
                 BEE HIANG
               </h1>
-              <div className="h-1 w-full bg-yellow-300 mt-0.5 md:mt-1 rounded-full shadow-sm group-hover:w-3/4 transition-all duration-300"></div>
+              <div className="h-1 w-full bg-yellow-300 mt-1 rounded-full"></div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10 lg:space-x-14">
+          <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => setActiveTab(link.id)}
-                className={`text-sm font-bold tracking-[0.15em] uppercase transition-all duration-300 hover:text-yellow-300 relative py-2 group ${activeTab === link.id
-                  ? 'text-yellow-300'
-                  : 'text-white'
+                className={`text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:text-yellow-300 relative py-2 ${activeTab === link.id
+                  ? 'text-white'
+                  : 'text-white/90'
                   }`}
               >
                 {link.label}
-                <span className={`absolute bottom-0 left-0 h-0.5 bg-yellow-300 transition-all duration-300 ${activeTab === link.id ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                {activeTab === link.id && (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
+                )}
               </button>
             ))}
           </div>
 
           {/* Icons & Mobile Toggle */}
-          <div className="flex items-center space-x-4 md:space-x-6">
-            <div className="relative cursor-pointer group p-2 hover:bg-white/10 rounded-full transition-colors">
-              <ShoppingBag className="h-6 w-6 text-yellow-300 transition-transform duration-300 group-hover:scale-110 stroke-[2.5]" />
+          <div className="flex items-center space-x-6">
+            <div className="relative cursor-pointer group p-2">
+              <ShoppingBag className="h-6 w-6 text-yellow-300 group-hover:text-white transition-colors stroke-[2.5]" />
               {cartCount > 0 && (
-                <span className="absolute top-0 right-0 bg-white text-[#DA291C] text-[10px] font-black rounded-full h-5 w-5 flex items-center justify-center shadow-md transform scale-100 transition-transform duration-300">
+                <span className="absolute top-0 right-0 bg-white text-[#DA291C] text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-sm">
                   {cartCount}
                 </span>
               )}
             </div>
 
             <button
-              className="md:hidden text-yellow-300 focus:outline-none hover:text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+              className="md:hidden text-yellow-300 focus:outline-none hover:text-white p-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+              {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden bg-[#B91C1C] border-t border-red-800 absolute w-full left-0 shadow-2xl z-50 transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="px-6 py-6 space-y-3">
+      <div className={`md:hidden bg-[#B91C1C] border-t border-red-800 absolute w-full left-0 shadow-xl z-50 transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="px-6 py-6 space-y-4">
           {navLinks.map((link) => (
             <button
               key={link.id}
@@ -278,9 +258,9 @@ const Navigation = ({ activeTab, setActiveTab, cartCount }) => {
                 setActiveTab(link.id);
                 setIsMenuOpen(false);
               }}
-              className={`block w-full text-left text-lg font-bold py-3 px-4 rounded-lg transition-all duration-200 ${activeTab === link.id
-                ? 'bg-red-900/60 text-yellow-300 border-l-4 border-yellow-300 pl-3'
-                : 'text-white/90 hover:text-yellow-300 hover:bg-red-800/40'
+              className={`block w-full text-left text-lg font-bold py-2 px-4 rounded-lg transition-colors ${activeTab === link.id
+                ? 'bg-red-900/50 text-white'
+                : 'text-yellow-300/80 hover:text-white hover:bg-red-800/30'
                 }`}
             >
               {link.label}
