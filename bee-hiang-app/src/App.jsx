@@ -206,154 +206,163 @@ const Navigation = ({ activeTab, setActiveTab, cartCount }) => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#DA291C] text-yellow-300 shadow-md">
+    <nav className="sticky top-0 z-50 bg-[#DA291C] shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-28">
+        <div className="flex justify-between items-center h-24">
 
+          {/* Logo Section */}
           <div
-            className="flex-shrink-0 cursor-pointer flex items-center space-x-4 group"
+            className="flex-shrink-0 cursor-pointer flex items-center gap-4 group"
             onClick={() => setActiveTab('home')}
           >
-            <div className="flex flex-col items-center justify-center border-2 border-yellow-300 rounded px-1 py-1 h-16 w-10 bg-[#DA291C] shadow-sm group-hover:bg-red-700 transition-colors">
-              <span className="font-serif font-bold text-yellow-300 text-lg leading-none mb-1">味</span>
-              <span className="font-serif font-bold text-yellow-300 text-lg leading-none">香</span>
+            {/* Red Box Logo */}
+            <div className="flex flex-col items-center justify-center border-2 border-yellow-300 rounded-sm px-2 py-1 h-16 w-12 bg-[#DA291C] shadow-sm">
+              <span className="font-serif font-bold text-yellow-300 text-xl leading-none mb-1">味</span>
+              <span className="font-serif font-bold text-yellow-300 text-xl leading-none">香</span>
             </div>
 
+            {/* Text Logo */}
             <div className="flex flex-col justify-center">
-              <h1 className="text-3xl font-black tracking-wide text-yellow-300 uppercase drop-shadow-md" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+              <h1 className="text-3xl font-black tracking-wide text-yellow-300 uppercase drop-shadow-sm" style={{ fontFamily: 'Arial Black, sans-serif' }}>
                 BEE HIANG
               </h1>
-              <div className="h-0.5 w-full bg-yellow-300 mt-1"></div>
+              <div className="h-1 w-full bg-yellow-300 mt-1 rounded-full"></div>
             </div>
           </div>
 
-          <div className="hidden md:flex space-x-12">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => setActiveTab(link.id)}
-                className={`text-sm font-bold tracking-widest uppercase transition-all duration-200 hover:text-white ${activeTab === link.id
-                  ? 'text-white border-b-2 border-white pb-1'
-                  : 'text-yellow-300/90'
+                className={`text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:text-yellow-300 relative py-2 ${activeTab === link.id
+                  ? 'text-white'
+                  : 'text-white/90'
                   }`}
               >
                 {link.label}
+                {activeTab === link.id && (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
+                )}
               </button>
             ))}
           </div>
 
+          {/* Icons & Mobile Toggle */}
           <div className="flex items-center space-x-6">
-            <div className="relative cursor-pointer group">
-              <ShoppingBag className="h-6 w-6 text-yellow-300 group-hover:text-white transition-colors" />
+            <div className="relative cursor-pointer group p-2">
+              <ShoppingBag className="h-6 w-6 text-yellow-300 group-hover:text-white transition-colors stroke-[2.5]" />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-white text-[#DA291C] text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-sm">
+                <span className="absolute top-0 right-0 bg-white text-[#DA291C] text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-sm">
                   {cartCount}
                 </span>
               )}
             </div>
 
             <button
-              className="md:hidden text-yellow-300 focus:outline-none hover:text-white"
+              className="md:hidden text-yellow-300 focus:outline-none hover:text-white p-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+              {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
             </button>
           </div>
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="md:hidden bg-[#B91C1C] border-t border-red-800 absolute w-full left-0 shadow-xl z-50">
-          <div className="px-8 py-6 space-y-4">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => {
-                  setActiveTab(link.id);
-                  setIsMenuOpen(false);
-                }}
-                className={`block w-full text-left text-lg font-bold ${activeTab === link.id
-                  ? 'text-white'
-                  : 'text-yellow-300/80 hover:text-white'
-                  }`}
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
+      {/* Mobile Menu */}
+      <div className={`md:hidden bg-[#B91C1C] border-t border-red-800 absolute w-full left-0 shadow-xl z-50 transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="px-6 py-6 space-y-4">
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => {
+                setActiveTab(link.id);
+                setIsMenuOpen(false);
+              }}
+              className={`block w-full text-left text-lg font-bold py-2 px-4 rounded-lg transition-colors ${activeTab === link.id
+                ? 'bg-red-900/50 text-white'
+                : 'text-yellow-300/80 hover:text-white hover:bg-red-800/30'
+                }`}
+            >
+              {link.label}
+            </button>
+          ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 };
 
 const Hero = ({ onShopNow }) => (
-  <div className="relative bg-[#FFFBEB] overflow-hidden">
-    <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#DA291C 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+  <div className="relative bg-[#FFFBEB] overflow-hidden min-h-[85vh] flex items-center">
+    {/* Dot Pattern Background */}
+    <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#DA291C 1.5px, transparent 1.5px)', backgroundSize: '24px 24px' }}></div>
 
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
-      <div className="order-2 md:order-1 flex flex-col items-start text-left">
-        <div className="inline-flex items-center space-x-2 mb-6 bg-red-100 px-3 py-1 rounded-full border border-red-200">
-          <span className="w-2 h-2 rounded-full bg-[#DA291C]"></span>
-          <span className="text-[#DA291C] text-xs font-bold uppercase tracking-wider">Est. 1988 • Parit Buntar</span>
-        </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center relative z-10">
 
-        <h2 className="text-5xl md:text-7xl font-serif font-bold text-gray-900 mb-6 leading-[1.1]">
-          The Taste of <br />
-          <span className="text-[#DA291C] decoration-yellow-400 underline decoration-4 underline-offset-4">Tradition.</span>
+      {/* Left Content */}
+      <div className="order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
+        <h2 className="text-5xl sm:text-6xl md:text-8xl font-serif font-bold text-gray-900 mb-8 leading-[1.1] tracking-tight">
+          <span className="block text-4xl md:text-5xl mb-2 text-gray-800">The Taste of</span>
+          <span className="text-[#DA291C] relative inline-block">
+            Tradition.
+            <div className="absolute w-full h-4 -bottom-2 left-0 bg-yellow-400 -z-10 opacity-80"></div>
+          </span>
         </h2>
 
-        <p className="max-w-md text-gray-700 text-lg mb-10 leading-relaxed">
-          Golden, flaky, and filled with memories. We bake our <strong>Heong Piah</strong> fresh daily using recipes passed down through generations.
+        <p className="max-w-md text-gray-700 text-lg md:text-xl mb-10 leading-relaxed font-light">
+          Golden, flaky, and filled with memories. We bake our <strong className="font-semibold text-gray-900">Heong Piah</strong> fresh daily using recipes passed down through generations.
         </p>
 
         <button
           onClick={onShopNow}
-          className="group bg-[#DA291C] text-yellow-300 px-10 py-4 text-sm font-bold tracking-widest uppercase hover:bg-red-800 hover:text-white transition-all duration-300 flex items-center shadow-lg rounded-sm"
+          className="group bg-[#DA291C] text-yellow-300 px-10 py-4 text-sm font-bold tracking-widest uppercase hover:bg-red-800 hover:text-white transition-all duration-300 flex items-center shadow-lg hover:shadow-xl rounded-sm transform hover:-translate-y-1"
         >
           Order Now
           <ChevronRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
 
-      <div className="order-1 md:order-2 relative">
-        <div className="relative z-10 transform rotate-3 hover:rotate-0 transition-all duration-500">
-          <div className="aspect-[4/5] md:aspect-square bg-white border-8 border-yellow-400 shadow-2xl p-6 flex items-center justify-center">
-            <div className="border border-red-200 h-full w-full flex items-center justify-center relative bg-red-50/30 overflow-hidden">
-              <span className="absolute text-[200px] text-[#DA291C] font-serif opacity-10 select-none z-0">酥</span>
-              <div className="relative z-10 w-full h-full flex items-center justify-center p-8">
-                {/* Reuse the Heong Piah Illustration but larger */}
-                <ProductImage type="Signature Maltose Pastry (Heong Piah)" className="w-64 h-64 !bg-transparent" />
-              </div>
+      {/* Right Image (Layered Card Style) */}
+      <div className="order-1 md:order-2 relative flex justify-center items-center p-8">
+        <div className="relative w-full max-w-md aspect-square">
+          {/* Yellow Background Layer */}
+          <div className="absolute inset-0 bg-yellow-400 transform rotate-3 rounded-sm shadow-lg"></div>
+
+          {/* White Card Layer */}
+          <div className="absolute inset-0 bg-white transform -rotate-2 rounded-sm shadow-xl flex items-center justify-center p-8 border border-gray-100">
+            {/* Inner Border */}
+            <div className="w-full h-full border border-red-100 flex items-center justify-center">
+              <ProductImage type="Signature Maltose Pastry (Heong Piah)" className="w-64 h-64 md:w-80 md:h-80 !bg-transparent drop-shadow-xl" />
             </div>
           </div>
         </div>
-        <div className="absolute top-4 right-4 w-full h-full bg-[#DA291C] rounded-sm -z-0 opacity-20 transform -rotate-2"></div>
       </div>
     </div>
   </div>
 );
 
 const ProductCard = ({ product, addToCart }) => (
-  <div className="group flex flex-col bg-white border border-gray-100 hover:border-yellow-400 hover:shadow-xl transition-all duration-300 rounded-sm overflow-hidden">
-    <div className="relative w-full aspect-[4/5] bg-gray-50 overflow-hidden">
+  <div className="group flex flex-col bg-white border border-gray-100 hover:border-yellow-400 hover:shadow-2xl transition-all duration-300 rounded-lg overflow-hidden h-full transform hover:-translate-y-1">
+    <div className="relative w-full aspect-square bg-gray-50 overflow-hidden">
       {/* Tag */}
       {product.tag && (
-        <span className="absolute top-0 right-0 z-10 bg-yellow-400 text-[#DA291C] text-xs font-black px-4 py-2 uppercase tracking-wide shadow-sm">
+        <span className="absolute top-3 right-3 z-10 bg-yellow-400 text-[#DA291C] text-[10px] font-black px-3 py-1 uppercase tracking-wide shadow-sm rounded-sm">
           {product.tag}
         </span>
       )}
 
       {/* Product Illustration */}
-      <div className="absolute inset-0">
-        <ProductImage type={product.name} className="w-full h-full" />
+      <div className="absolute inset-0 p-6 transition-transform duration-500 group-hover:scale-110">
+        <ProductImage type={product.name} className="w-full h-full !bg-transparent" />
       </div>
 
       {/* Quick Add Overlay */}
-      <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-white/30 backdrop-blur-sm">
+      <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-white/90 backdrop-blur-sm border-t border-gray-100">
         <button
           onClick={() => addToCart(product)}
-          className="w-full bg-[#DA291C] text-yellow-300 py-3 text-xs font-bold uppercase tracking-widest hover:bg-red-800 shadow-md transition-colors flex items-center justify-center space-x-2"
+          className="w-full bg-[#DA291C] text-yellow-300 py-3 text-xs font-bold uppercase tracking-widest hover:bg-red-800 shadow-md transition-all rounded-sm flex items-center justify-center space-x-2 active:scale-95"
         >
           <ShoppingBag className="w-4 h-4" />
           <span>Add to Cart</span>
@@ -361,9 +370,9 @@ const ProductCard = ({ product, addToCart }) => (
       </div>
     </div>
 
-    <div className="flex flex-col p-6 h-full">
-      <p className="text-[#DA291C] text-xs font-bold uppercase tracking-wider mb-2">{product.chineseName}</p>
-      <h3 className="text-gray-900 font-bold text-lg mb-2 leading-tight">
+    <div className="flex flex-col p-5 h-full">
+      <p className="text-[#DA291C] text-xs font-bold uppercase tracking-wider mb-1">{product.chineseName}</p>
+      <h3 className="text-gray-900 font-bold text-lg mb-2 leading-tight group-hover:text-[#DA291C] transition-colors">
         {product.name}
       </h3>
       <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-2 flex-grow">
@@ -372,11 +381,9 @@ const ProductCard = ({ product, addToCart }) => (
       <div className="pt-4 border-t border-gray-100 flex items-center justify-between mt-auto">
         <span className="text-xl font-bold text-gray-900">${product.price.toFixed(2)}</span>
         <div className="flex text-yellow-400">
-          <Star className="w-4 h-4 fill-current" />
-          <Star className="w-4 h-4 fill-current" />
-          <Star className="w-4 h-4 fill-current" />
-          <Star className="w-4 h-4 fill-current" />
-          <Star className="w-4 h-4 fill-current" />
+          {[...Array(5)].map((_, i) => (
+            <Star key={i} className="w-3.5 h-3.5 fill-current" />
+          ))}
         </div>
       </div>
     </div>
@@ -395,7 +402,7 @@ const FeaturedSection = ({ products, addToCart, onSeeAll }) => (
       </button>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {products.slice(0, 4).map((product) => (
         <ProductCard key={product.id} product={product} addToCart={addToCart} />
       ))}
@@ -556,8 +563,8 @@ const ContactPage = () => (
 const Footer = ({ onNavClick }) => (
   <footer className="bg-[#1a1a1a] text-white pt-20 pb-10 border-t-4 border-[#DA291C]">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-        <div className="col-span-1 md:col-span-2 pr-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="col-span-1 lg:col-span-2 pr-0 lg:pr-12">
           <div className="flex items-center space-x-3 mb-6">
             <div className="flex flex-col items-center justify-center border border-white/20 rounded px-1 py-1 h-12 w-8 bg-[#DA291C]">
               <span className="font-serif font-bold text-yellow-300 text-xs leading-none">味</span>
@@ -572,23 +579,23 @@ const Footer = ({ onNavClick }) => (
         <div>
           <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-widest text-[#DA291C]">Shop</h4>
           <ul className="space-y-4 text-gray-400 text-sm">
-            <li><button onClick={() => onNavClick('shop')} className="hover:text-yellow-300 transition-colors">Signatures</button></li>
-            <li><button onClick={() => onNavClick('shop')} className="hover:text-yellow-300 transition-colors">Gift Boxes</button></li>
-            <li><button onClick={() => onNavClick('shop')} className="hover:text-yellow-300 transition-colors">All Products</button></li>
+            <li><button onClick={() => onNavClick('shop')} className="hover:text-yellow-300 transition-colors text-left">Signatures</button></li>
+            <li><button onClick={() => onNavClick('shop')} className="hover:text-yellow-300 transition-colors text-left">Gift Boxes</button></li>
+            <li><button onClick={() => onNavClick('shop')} className="hover:text-yellow-300 transition-colors text-left">All Products</button></li>
           </ul>
         </div>
         <div>
           <h4 className="font-bold text-white mb-6 text-sm uppercase tracking-widest text-[#DA291C]">Info</h4>
           <ul className="space-y-4 text-gray-400 text-sm">
-            <li><button onClick={() => onNavClick('contact')} className="hover:text-yellow-300 transition-colors">Locations</button></li>
-            <li><button onClick={() => onNavClick('contact')} className="hover:text-yellow-300 transition-colors">Contact Us</button></li>
-            <li><span className="cursor-not-allowed">Privacy Policy</span></li>
+            <li><button onClick={() => onNavClick('contact')} className="hover:text-yellow-300 transition-colors text-left">Locations</button></li>
+            <li><button onClick={() => onNavClick('contact')} className="hover:text-yellow-300 transition-colors text-left">Contact Us</button></li>
+            <li><span className="cursor-not-allowed opacity-50">Privacy Policy</span></li>
           </ul>
         </div>
       </div>
       <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 uppercase tracking-wider">
-        <p>&copy; 2024 Bee Hiang Biscuits.</p>
-        <p className="mt-2 md:mt-0">Taste of Tradition</p>
+        <p className="mb-2 md:mb-0">&copy; 2024 Bee Hiang Biscuits.</p>
+        <p>Taste of Tradition</p>
       </div>
     </div>
   </footer>
