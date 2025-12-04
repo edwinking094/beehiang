@@ -303,6 +303,12 @@ const Hero = ({ onShopNow }) => (
 
       {/* Left Content */}
       <div className="order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
+        {/* EST Tag */}
+        <div className="inline-flex items-center space-x-2 bg-red-100 text-[#DA291C] px-4 py-1.5 rounded-full text-xs font-black tracking-widest uppercase mb-6 shadow-sm">
+          <div className="w-2 h-2 rounded-full bg-[#DA291C]"></div>
+          <span>Est. 1988 • Parit Buntar</span>
+        </div>
+
         <h2 className="text-5xl sm:text-6xl md:text-8xl font-serif font-bold text-gray-900 mb-8 leading-[1.1] tracking-tight">
           <span className="block text-4xl md:text-5xl mb-2 text-gray-800">The Taste of</span>
           <span className="text-[#DA291C] relative inline-block">
@@ -324,17 +330,43 @@ const Hero = ({ onShopNow }) => (
         </button>
       </div>
 
-      {/* Right Image (Layered Card Style) */}
-      <div className="order-1 md:order-2 relative flex justify-center items-center p-8">
-        <div className="relative w-full max-w-md aspect-square">
-          {/* Yellow Background Layer */}
-          <div className="absolute inset-0 bg-yellow-400 transform rotate-3 rounded-sm shadow-lg"></div>
+      {/* Right Content: Smooth Scrolling Carousel */}
+      <div className="order-1 md:order-2 relative w-full flex justify-center items-center">
+        {/* Decorative Background Blob */}
+        <div className="absolute inset-0 bg-yellow-200/50 blur-3xl rounded-full transform scale-75"></div>
 
-          {/* White Card Layer */}
-          <div className="absolute inset-0 bg-white transform -rotate-2 rounded-sm shadow-xl flex items-center justify-center p-8 border border-gray-100">
-            {/* Inner Border */}
-            <div className="w-full h-full border border-red-100 flex items-center justify-center">
-              <ProductImage type="Signature Maltose Pastry (Heong Piah)" className="w-64 h-64 md:w-80 md:h-80 !bg-transparent drop-shadow-xl" />
+        {/* Carousel Container */}
+        <div className="relative w-full max-w-md aspect-square">
+          {/* Yellow Frame Background */}
+          <div className="absolute inset-0 bg-yellow-400 transform rotate-3 rounded-sm shadow-lg z-0"></div>
+
+          {/* White Card Container */}
+          <div className="absolute inset-0 bg-white transform -rotate-2 rounded-sm shadow-xl z-10 overflow-hidden border border-gray-100">
+            {/* Scrollable Area */}
+            <div className="w-full h-full overflow-x-auto snap-x snap-mandatory flex scrollbar-hide">
+              {PRODUCTS.map((product) => (
+                <div key={product.id} className="w-full h-full flex-shrink-0 snap-center flex items-center justify-center p-8 relative">
+                  {/* Inner Border Frame */}
+                  <div className="absolute inset-4 border border-red-100 pointer-events-none"></div>
+
+                  <div className="flex flex-col items-center">
+                    <div className="w-48 h-48 sm:w-64 sm:h-64 drop-shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                      <ProductImage type={product.name} />
+                    </div>
+                    <div className="mt-6 text-center">
+                      <h3 className="text-xl font-bold text-gray-900 leading-tight">{product.name}</h3>
+                      <p className="text-[#DA291C] text-sm font-bold uppercase tracking-wider mt-1">{product.chineseName}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Scroll Indicators (Optional visual cue) */}
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 pointer-events-none">
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
             </div>
           </div>
         </div>
