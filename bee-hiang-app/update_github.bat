@@ -11,7 +11,9 @@ echo [2/3] Committing changes...
 git commit -m "Update: %date% %time%"
 
 echo.
+echo.
 echo [3/3] Pushing to GitHub...
+git pull origin main
 git push origin main
 
 echo.

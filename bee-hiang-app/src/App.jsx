@@ -206,73 +206,71 @@ const Navigation = ({ activeTab, setActiveTab, cartCount }) => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#DA291C] shadow-lg">
+    <nav className="sticky top-0 z-50 bg-[#DA291C] shadow-xl transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24">
+        <div className="flex justify-between items-center h-20 md:h-24">
 
           {/* Logo Section */}
           <div
-            className="flex-shrink-0 cursor-pointer flex items-center gap-4 group"
+            className="flex-shrink-0 cursor-pointer flex items-center gap-3 md:gap-4 group"
             onClick={() => setActiveTab('home')}
           >
             {/* Red Box Logo */}
-            <div className="flex flex-col items-center justify-center border-2 border-yellow-300 rounded-sm px-2 py-1 h-16 w-12 bg-[#DA291C] shadow-sm">
-              <span className="font-serif font-bold text-yellow-300 text-xl leading-none mb-1">味</span>
-              <span className="font-serif font-bold text-yellow-300 text-xl leading-none">香</span>
+            <div className="flex flex-col items-center justify-center border-[2.5px] border-yellow-300 rounded-sm px-1.5 py-1 h-14 w-11 md:h-16 md:w-12 bg-[#DA291C] shadow-md group-hover:shadow-lg transition-all duration-300 transform group-hover:scale-105">
+              <span className="font-serif font-bold text-yellow-300 text-lg md:text-xl leading-none mb-0.5">味</span>
+              <span className="font-serif font-bold text-yellow-300 text-lg md:text-xl leading-none">香</span>
             </div>
 
             {/* Text Logo */}
             <div className="flex flex-col justify-center">
-              <h1 className="text-3xl font-black tracking-wide text-yellow-300 uppercase drop-shadow-sm" style={{ fontFamily: 'Arial Black, sans-serif' }}>
+              <h1 className="text-2xl md:text-3xl font-black tracking-wide text-yellow-300 uppercase drop-shadow-sm transition-colors duration-300" style={{ fontFamily: 'Arial Black, sans-serif' }}>
                 BEE HIANG
               </h1>
-              <div className="h-1 w-full bg-yellow-300 mt-1 rounded-full"></div>
+              <div className="h-1 w-full bg-yellow-300 mt-0.5 md:mt-1 rounded-full shadow-sm group-hover:w-3/4 transition-all duration-300"></div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-12">
+          <div className="hidden md:flex items-center space-x-10 lg:space-x-14">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => setActiveTab(link.id)}
-                className={`text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:text-yellow-300 relative py-2 ${activeTab === link.id
-                  ? 'text-white'
-                  : 'text-white/90'
+                className={`text-sm font-bold tracking-[0.15em] uppercase transition-all duration-300 hover:text-yellow-300 relative py-2 group ${activeTab === link.id
+                  ? 'text-yellow-300'
+                  : 'text-white'
                   }`}
               >
                 {link.label}
-                {activeTab === link.id && (
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white"></span>
-                )}
+                <span className={`absolute bottom-0 left-0 h-0.5 bg-yellow-300 transition-all duration-300 ${activeTab === link.id ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
               </button>
             ))}
           </div>
 
           {/* Icons & Mobile Toggle */}
-          <div className="flex items-center space-x-6">
-            <div className="relative cursor-pointer group p-2">
-              <ShoppingBag className="h-6 w-6 text-yellow-300 group-hover:text-white transition-colors stroke-[2.5]" />
+          <div className="flex items-center space-x-4 md:space-x-6">
+            <div className="relative cursor-pointer group p-2 hover:bg-white/10 rounded-full transition-colors">
+              <ShoppingBag className="h-6 w-6 text-yellow-300 transition-transform duration-300 group-hover:scale-110 stroke-[2.5]" />
               {cartCount > 0 && (
-                <span className="absolute top-0 right-0 bg-white text-[#DA291C] text-[10px] font-bold rounded-full h-5 w-5 flex items-center justify-center shadow-sm">
+                <span className="absolute top-0 right-0 bg-white text-[#DA291C] text-[10px] font-black rounded-full h-5 w-5 flex items-center justify-center shadow-md transform scale-100 transition-transform duration-300">
                   {cartCount}
                 </span>
               )}
             </div>
 
             <button
-              className="md:hidden text-yellow-300 focus:outline-none hover:text-white p-2"
+              className="md:hidden text-yellow-300 focus:outline-none hover:text-white p-2 hover:bg-white/10 rounded-full transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+              {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden bg-[#B91C1C] border-t border-red-800 absolute w-full left-0 shadow-xl z-50 transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="px-6 py-6 space-y-4">
+      <div className={`md:hidden bg-[#B91C1C] border-t border-red-800 absolute w-full left-0 shadow-2xl z-50 transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="px-6 py-6 space-y-3">
           {navLinks.map((link) => (
             <button
               key={link.id}
@@ -280,9 +278,9 @@ const Navigation = ({ activeTab, setActiveTab, cartCount }) => {
                 setActiveTab(link.id);
                 setIsMenuOpen(false);
               }}
-              className={`block w-full text-left text-lg font-bold py-2 px-4 rounded-lg transition-colors ${activeTab === link.id
-                ? 'bg-red-900/50 text-white'
-                : 'text-yellow-300/80 hover:text-white hover:bg-red-800/30'
+              className={`block w-full text-left text-lg font-bold py-3 px-4 rounded-lg transition-all duration-200 ${activeTab === link.id
+                ? 'bg-red-900/60 text-yellow-300 border-l-4 border-yellow-300 pl-3'
+                : 'text-white/90 hover:text-yellow-300 hover:bg-red-800/40'
                 }`}
             >
               {link.label}
